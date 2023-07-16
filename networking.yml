@@ -55,12 +55,14 @@ Resources:
                   - ec2.amazonaws.com
               Action:
                 - 'sts:AssumeRole'
+        Path: /
         ManagedPolicyArns:
-          - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
+        - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
           
   ProfileWithRolesForOurApp:
     Type: AWS::IAM::InstanceProfile
     Properties: 
+      Path: /
       Roles:
         - !Ref UdagramS3ReadOnlyEC2
 

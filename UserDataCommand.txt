@@ -1,0 +1,10 @@
+#!/bin/bash -xe
+sudo exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
+sudo apt update -y
+sudo apt-get install wget
+sudo apt install -y apache2
+sudo systemctl start apache2
+sudo systemctl enable apache2
+cd ../../var/www/html
+rm -f index.html
+sudo wget -P ../../var/www/html https://myudagrams3-5386-1713-9882.s3.amazonaws.com/index.html
