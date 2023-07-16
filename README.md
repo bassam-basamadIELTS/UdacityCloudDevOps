@@ -3,7 +3,7 @@
 
 **The project contains the following files:**
 
-1. create.sh : This file for running the aws command to create the stack
+1. *create.sh* : This file for running the aws command to create the stack
 2. Project-Udagrram-diagram.jpeg : This will have the architecture for the project
 3. networking.yml : this file will configure the networking infrastructure only
 4. Project-networking.json : this file contains all the parameters need for networking.yml
