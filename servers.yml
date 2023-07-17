@@ -82,12 +82,15 @@ Resources:
     Properties:
       UserData:
         Fn::Base64: 
-          #!/bin/bash
-          apt-get update -y
-          apt-get install apache2 -y
-          systemctl start apache2.service
-          cd /var/www/html
-          echo "it works! Udagram, Udacity!" > index.html          
+          #!/bin/bash -xe
+          sudo apt update -y
+          sudo apt install -y apache2
+          sudo systemctl start apache2
+          sudo systemctl enable apache2
+          sudo apt-get install wget
+          cd ../../var/www/html
+          sudo rm -f index.html
+          sudo wget -nd  https://mybucketpublic.s3.amazonaws.com/index.html          
       #   ToDo: AMI ID of Ubuntu Linux machine. Too get one, try creating a VM from the web console. 
       ImageId: !Ref AMItoUse
       IamInstanceProfile: 
