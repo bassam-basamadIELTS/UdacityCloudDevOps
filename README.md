@@ -14,7 +14,7 @@ There will be two parts to this project:
 * **Script (Template and Parameters)**: The second part is to interpret the instructions and create a matching CloudFormation script.
 
 
-### The project files: ###
+## The project files: ##
 
 1. **create.sh** : This file for running the aws command to create the stack
 2. **Project-Udagrram-diagram.jpeg** : This will have the architecture for the project
@@ -23,7 +23,8 @@ There will be two parts to this project:
 5. **servers.yml**: this file will configure the servers and jump server and related stuff
 6. **Project-servers.json**: this file contains the parameters related to the servers.yml 
 
-### The Application Diagram ###
+## The Application Diagram ##
 ![Application diagram Image](Project-Udagram-diagram.jpeg)
 
-### The Output Result ##
+## The Output Result ##
+
