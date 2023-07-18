@@ -57,6 +57,10 @@ Resources:
         FromPort: 80
         ToPort: 80
         CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 0.0.0.0/0
       SecurityGroupEgress:
       - IpProtocol: tcp
         FromPort: 0
@@ -81,8 +85,8 @@ Resources:
     Type: AWS::AutoScaling::LaunchConfiguration
     Properties:
       UserData:
-        Fn::Base64: 
-          #!/bin/bash -xe
+        Fn::Base64: !Sub |
+          #!/bin/bash
           sudo apt update -y
           sudo apt install -y apache2
           sudo systemctl start apache2
@@ -90,7 +94,7 @@ Resources:
           sudo apt-get install wget
           cd ../../var/www/html
           sudo rm -f index.html
-          sudo wget -nd  https://myudagrams3-5386-1713-9882.s3.amazonaws.com/index.html          
+          sudo wget -nd  https://myudagrams3-5386-1713-9882.s3.amazonaws.com/index.html        
       #   ToDo: AMI ID of Ubuntu Linux machine. Too get one, try creating a VM from the web console. 
       ImageId: !Ref AMItoUse
       IamInstanceProfile: 
@@ -103,7 +107,6 @@ Resources:
       - DeviceName: "/dev/sda1"
         Ebs:
           VolumeSize: '10'
-          VolumeType: 'gp2'
   
   WebAppGroup:
       Type: AWS::AutoScaling::AutoScalingGroup
